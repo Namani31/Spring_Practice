@@ -20,10 +20,6 @@ public class Article {
         this.content = content;
     }
 
-    public Article() {
-
-    }
-
     @Override
     public String toString() {
         return "Article{" +
@@ -31,5 +27,9 @@ public class Article {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    public Article() {
+
     }
 }

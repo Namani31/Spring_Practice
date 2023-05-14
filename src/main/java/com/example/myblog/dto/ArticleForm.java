@@ -37,6 +37,10 @@ public class ArticleForm {
         this.author = author;
     }
 
+    public Article toEntity() {
+        return new Article(null, title, content);
+    }
+
     @Override
     public String toString() {
         return "ArticleForm{" +
@@ -46,7 +50,5 @@ public class ArticleForm {
                 '}';
     }
 
-    public Article toEntity() {
-        return new Article(null, title, content);
-    }
+
 }
