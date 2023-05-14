@@ -1,5 +1,7 @@
 package com.example.myblog.dto;
 
+import com.example.myblog.entity.Article;
+
 public class ArticleForm {
     private String title;
     private String content;
@@ -42,5 +44,9 @@ public class ArticleForm {
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 '}';
+    }
+
+    public Article toEntity() {
+        return new Article(null, title, content);
     }
 }
