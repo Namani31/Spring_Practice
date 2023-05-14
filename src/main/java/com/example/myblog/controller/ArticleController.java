@@ -35,21 +35,21 @@ public class ArticleController {
 
     @PostMapping("/articles") // Post 방식으로 "/articles" 요청이 들어오면, 아래 메소드 수행!
     public String create(ArticleForm form) { // 폼 태그의 데이터가 ArticleForm 객체로 만들어 짐!
-        log.info(form.toString()); // ArticleForm 객체 정보를 확인!
         return "redirect:/articles"; // 브라우저를 "/articles" url로 보냄!
     }
 
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form) {
-        System.out.println(form.toString());
+        log.info(form.toString());
+        // System.out.println(form.toString()); -> 로깅 기능으로 대체
 
         // 1. Dto를 Entity 변환
         Article article = form.toEntity();
-        System.out.println(article.toString());
+        log.info(article.toString());
 
         // 2. Repository에게 Entity를 DB로 저장하게 함
         Article saved = articleRepository.save(article);
-        System.out.println(saved.toString());
+        log.info(saved.toString());
 
         return "";
     }

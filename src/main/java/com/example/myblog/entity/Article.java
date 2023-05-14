@@ -1,5 +1,7 @@
 package com.example.myblog.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Column;
@@ -7,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@AllArgsConstructor // id, title, content, author를 파라미터로 하는 생성자를 자동으로 만들어줌
+@ToString
 @Entity // DB가 해당 객체를 인식 가능!
 public class Article {
 
@@ -22,21 +26,4 @@ public class Article {
 
     @Column
     private String author;
-
-    public Article(Long id, String title, String content, String author) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-    }
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", author='" + author + '\'' +
-                '}';
-    }
 }
