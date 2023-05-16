@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Getter // 게터를 자동 생성
 @NoArgsConstructor // 디폴트 생성자 추가
+// @AllArgsConstructor // id, title, content, author를 파라미터로 하는 생성자를 자동으로 만들어줌
 @ToString   // toString() 자동 생성
 @Entity // DB가 해당 객체를 인식 가능!
 public class Article {
@@ -30,5 +31,6 @@ public class Article {
         this.title = title;
         this.content = content;
         this.author = author;
+        // return new Article(null, title, content, author);
     }
 }
