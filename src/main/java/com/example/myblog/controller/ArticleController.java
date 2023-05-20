@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Slf4j // 로깅 (logging) 기능 추가, Lombok 플러그인 설치 필요
 @RequiredArgsConstructor // final 필드 값을 알아서 가져옴 (@autowired 대체)
 @Controller // 컨트롤러 선언, 요청과 응답 처리
@@ -20,18 +22,16 @@ public class ArticleController {
     @Autowired // 스프링부트가 미리 생성해놓은 리파지토리 객체를 가져옴 (DI)
     private ArticleRepository articleRepository;
 
-    @GetMapping("/articles") // 해당 요청을 처리하도록, 메소드를 등록
-    public String index(Model model) {  // 뷰 페이지로 데이터 전달을 위한 Model 객체 자동 삽입 됨
-       /*
-            모든 Article 을 가져옴
-            Iterable 인터페이스는 ArrayList의 부모 인터페이스
-        */
-        Iterable<Article> articleList = articleRepository.findAll();
+    @GetMapping("/articles")
+    public String index(Model model) {
 
-        // 뷰 페이지로 article 전달
-        model.addAttribute("articles", articleList);
+        // 1. 모든 Article을 가져온다
+        List<Article> articleEntityList = articleRepository.findAll();
 
-        // 뷰 페이지 설정
+        // 2. 가져온 Article 묶음을 뷰로 전달
+        model.addAttribute("articleList", articleEntityList);
+
+        // 3. 뷰 페이지를 설정
         return "articles/index";
     }
     
